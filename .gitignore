@@ -1,0 +1,11 @@
+# Ignora tota la carpeta de mysql
+mysql/*
+
+# Ignorar todo el contenido de la carpeta src
+src/*
+
+# No ignorar el archivo index.html
+!src/index.html
+
+# No ignorar el archivo index.php
+!src/index.php

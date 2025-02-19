@@ -1,0 +1,39 @@
+services:
+  php-apache:
+    build: .
+    container_name: php-apache
+    ports:
+      - "8080:80"
+    volumes:
+      - ./src:/var/www/html
+    depends_on:
+      - mysql-server
+
+  # contenedor mysql
+  mysql-server:
+    image: mysql:8.0.40
+    container_name: 'mysql-server'
+    restart: 'always'
+    ports:
+      - 3307:3306
+    security_opt:
+      - seccomp:unconfined
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - ./mysql/data:/var/lib/mysql
+    
+  # contenedor phpMyAdmin
+  phpmyadmin:
+    image: phpmyadmin:latest
+    container_name: 'phpmyadmin-server'
+    restart: always
+    depends_on:
+      - mysql-server
+    ports:
+      - 8081:80
+    environment:
+      - PMA_HOST=mysql-server
+
+volumes:
+  db_data:
