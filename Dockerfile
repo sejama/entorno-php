@@ -5,21 +5,12 @@ FROM php:8.3-apache
 RUN apt-get update && apt-get upgrade -y
 
 # Instalación de dependencias
-RUN apt-get install -y \
-    git \
-    zip \
-    unzip \
-    libzip-dev \
-    curl \
-    libicu-dev
-
-# Crear un usuario no root
-RUN useradd -m -u 1000 -s /bin/bash developer
-
-# Instalación de extensiones de PHP
-USER root
-RUN docker-php-ext-configure intl \
-    && docker-php-ext-install pdo pdo_mysql mysqli intl
+# Install any extensions you need
+RUN apt-get update \
+&& apt-get install -y libicu-dev git zip unzip curl libzip-dev zlib1g-dev libpng-dev libjpeg-dev libfreetype6-dev libmcrypt-dev libbz2-dev\
+&& docker-php-ext-configure intl \
+&& docker-php-ext-install intl mysqli pdo pdo_mysql gd bz2 \
+&& docker-php-ext-enable mysqli pdo pdo_mysql gd bz2 
 
 # Instalación de Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
@@ -29,6 +20,9 @@ COPY config/php.ini /usr/local/etc/php/
 
 # Habilitar mod_rewrite de Apache
 RUN a2enmod rewrite
+
+# Crear un usuario no root
+RUN useradd -m -u 1000 -s /bin/bash developer
 
 # Cambiar el propietario del directorio de trabajo
 RUN chown -R developer:developer /var/www/html

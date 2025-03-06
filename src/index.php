@@ -7,5 +7,9 @@
 </head>
 <body>
     <p>Entorno PHP</p>
+    <?php
+        var_dump(gd_info());
+        phpinfo();
+    ?>
 </body>
 </html>
