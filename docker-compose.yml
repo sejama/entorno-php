@@ -1,18 +1,18 @@
 services:
-  php-apache:
+  server-php-apache:
     build: .
-    container_name: php-apache
+    container_name: server-php-apache
     ports:
       - "8080:80"
     volumes:
       - ./src:/var/www/html
     depends_on:
-      - mysql-server
+      - server-mysql
 
   # contenedor mysql
-  mysql-server:
+  server-mysql:
     image: mysql:8.0.40
-    container_name: 'mysql-server'
+    container_name: 'server-mysql'
     restart: 'always'
     ports:
       - 3307:3306
@@ -24,16 +24,16 @@ services:
       - ./mysql/data:/var/lib/mysql
     
   # contenedor phpMyAdmin
-  phpmyadmin:
+  server-phpmyadmin:
     image: phpmyadmin:latest
-    container_name: 'phpmyadmin-server'
+    container_name: 'server-phpmyadmin'
     restart: always
     depends_on:
-      - mysql-server
+      - server-mysql
     ports:
       - 8081:80
     environment:
-      - PMA_HOST=mysql-server
+      - PMA_HOST=server-mysql
 
 volumes:
   db_data:
