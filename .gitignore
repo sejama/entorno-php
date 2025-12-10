@@ -3,6 +3,7 @@ mysql/*
 
 # Ignorar todo el contenido de la carpeta src
 src/*
+frontend/*
 
 # No ignorar el archivo index.html
 !src/index.html
