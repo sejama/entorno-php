@@ -7,10 +7,12 @@ RUN apt-get update && apt-get upgrade -y
 # Instalación de dependencias
 # Install any extensions you need
 RUN apt-get update \
-&& apt-get install -y libicu-dev git zip unzip curl libzip-dev zlib1g-dev libpng-dev libjpeg-dev libfreetype6-dev libmcrypt-dev libbz2-dev\
+&& apt-get install -y libicu-dev git zip unzip curl libzip-dev zlib1g-dev libpng-dev libjpeg-dev libfreetype6-dev libmcrypt-dev libbz2-dev $PHPIZE_DEPS \
 && docker-php-ext-configure intl \
 && docker-php-ext-install intl mysqli pdo pdo_mysql gd bz2 \
-&& docker-php-ext-enable mysqli pdo pdo_mysql gd bz2 
+&& docker-php-ext-enable mysqli pdo pdo_mysql gd bz2 \
+&& pecl install xdebug \
+&& docker-php-ext-enable xdebug
 
 # Instalación de Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
