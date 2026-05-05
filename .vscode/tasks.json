@@ -1,0 +1,71 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Docker Compose Up",
+      "type": "shell",
+      "command": "docker compose up -d",
+      "problemMatcher": []
+    },
+    {
+      "label": "Docker Compose Down",
+      "type": "shell",
+      "command": "docker compose down",
+      "problemMatcher": []
+    },
+    {
+      "label": "Open PHP Apache Shell",
+      "type": "shell",
+      "command": "docker compose exec server-php-apache bash",
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always"
+      }
+    },
+    {
+      "label": "Open MySQL Shell",
+      "type": "shell",
+      "command": "docker compose exec server-mysql mysql -uroot -proot",
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always"
+      }
+    },
+    {
+      "label": "Composer Install (backend)",
+      "type": "shell",
+      "command": "docker compose exec server-php-apache composer install --no-interaction --prefer-dist --working-dir /var/www/html/backend",
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always"
+      }
+    },
+    {
+      "label": "Symfony Cache Clear",
+      "type": "shell",
+      "command": "docker compose exec server-php-apache php /var/www/html/backend/bin/console cache:clear",
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always"
+      }
+    },
+    {
+      "label": "Composer Install (comercio)",
+      "type": "shell",
+      "command": "docker compose exec server-php-apache composer install --no-interaction --prefer-dist --working-dir /var/www/html/comercio",
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always"
+      }
+    },
+    {
+      "label": "Composer Install (sgt)",
+      "type": "shell",
+      "command": "docker compose exec server-php-apache composer install --no-interaction --prefer-dist --working-dir /var/www/html/sgt",
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always"
+      }
+    }
+  ]
+}

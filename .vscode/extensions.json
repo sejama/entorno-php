@@ -1,0 +1,11 @@
+{
+  "recommendations": [
+    "ms-azuretools.vscode-docker",
+    "bmewburn.vscode-php-intellisense",
+    "junstyle.php-cs-fixer",
+    "esbenp.prettier-vscode",
+    "bmewburn.vscode-phpcs",
+    "mehedidracula.php-namespace-resolver",
+    "felixfbecker.php-debug"
+  ]
+}

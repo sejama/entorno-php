@@ -1,0 +1,47 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Listen for Xdebug (backend)",
+      "type": "php",
+      "request": "launch",
+      "port": 9003,
+      "pathMappings": {
+        "/var/www/html/backend": "${workspaceFolder}"
+      },
+      "xdebugSettings": {
+        "max_children": 100,
+        "max_data": 10000,
+        "max_depth": 5
+      }
+    },
+    {
+      "name": "Listen for Xdebug (comercio)",
+      "type": "php",
+      "request": "launch",
+      "port": 9003,
+      "pathMappings": {
+        "/var/www/html/comercio": "${workspaceFolder}"
+      },
+      "xdebugSettings": {
+        "max_children": 100,
+        "max_data": 10000,
+        "max_depth": 5
+      }
+    },
+    {
+      "name": "Listen for Xdebug (sgt)",
+      "type": "php",
+      "request": "launch",
+      "port": 9003,
+      "pathMappings": {
+        "/var/www/html/sgt": "${workspaceFolder}"
+      },
+      "xdebugSettings": {
+        "max_children": 100,
+        "max_data": 10000,
+        "max_depth": 5
+      }
+    }
+  ]
+}

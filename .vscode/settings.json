@@ -1,0 +1,19 @@
+{
+  "php.validate.executablePath": "/usr/local/bin/php",
+  "php.suggest.basic": false,
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "junstyle.php-cs-fixer",
+  "phpcs.enable": true,
+  "phpcs.standard": "PSR12",
+  "terminal.integrated.defaultProfile.linux": "bash",
+  "files.exclude": {
+    "**/var/**": true,
+    "**/vendor/**": true,
+    "**/node_modules/**": true
+  },
+  "files.watcherExclude": {
+    "**/var/**": true,
+    "**/vendor/**": true,
+    "**/node_modules/**": true
+  }
+}
