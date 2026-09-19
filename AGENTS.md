@@ -8,15 +8,16 @@ Este repositorio usa Docker Compose y el contenedor `server-php-apache` para el 
 - Servicio Docker principal: `server-php-apache`
 - Carpeta de trabajo: `src/`
 - Ruta en contenedor: `/var/www/html/`
-- Subproyectos Symfony disponibles: `src/backend`, `src/comercio`, `src/sgt`
+- Subproyecto principal: `src/sgt_mvc` (PHP 8.3+, Symfony 7.4 LTS)
 - Comandos principales:
   - `docker compose up -d`
   - `docker compose exec server-php-apache bash`
-  - `docker compose exec server-php-apache composer install --working-dir /var/www/html/<subproject>`
+  - `docker compose exec server-php-apache composer --working-dir /var/www/html/sgt_mvc quality`
+  - `docker compose exec server-php-apache php /var/www/html/sgt_mvc/vendor/bin/phpunit -c /var/www/html/sgt_mvc/phpunit.xml.dist`
 
-## Recomendación
+## Regla Mandatoria: Uso Estricto de OpenSpec
 
-Abre siempre el workspace con Remote Containers / Dev Containers para trabajar con el contexto del contenedor y garantizar que todo el código de `src` esté disponible dentro del contenedor.
-
-- Antes de comenzar, selecciona el proyecto Symfony a editar: `src/backend`, `src/comercio` o `src/sgt`.
-- Usa `src/.agent.md` para el flujo genérico de Symfony, y los archivos `SKILL.md` en cada subcarpeta para reglas específicas del proyecto.
+Para cualquier modificación, nueva característica, refactorización o corrección en `src/sgt_mvc/`, el agente **DEBE** seguir siempre el flujo OpenSpec:
+1. Crear/cargar el cambio en `src/sgt_mvc/openspec/changes/<nombre-cambio>/` (`proposal.md`, `design.md`, `specs/`, `tasks.md`).
+2. Ejecutar las tareas de `tasks.md` secuencialmente actualizando los casilleros `- [ ]` a `- [x]` al completar cada paso.
+3. Archivar el cambio en `src/sgt_mvc/openspec/changes/archive/<nombre-cambio>/` una vez finalizadas las verificaciones.
