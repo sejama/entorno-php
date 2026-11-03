@@ -1,5 +1,5 @@
-# Imagen base con PHP 8.3 y Apache
-FROM php:8.3-apache
+# Imagen base con PHP 8.4 y Apache
+FROM php:8.4-apache
 
 # Actualizar el sistema
 RUN apt-get update && apt-get upgrade -y
