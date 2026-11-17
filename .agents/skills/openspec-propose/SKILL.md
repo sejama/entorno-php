@@ -5,23 +5,22 @@ description: Propose a new OpenSpec change for sgt_mvc. Creates proposal, design
 
 # OpenSpec Propose Skill
 
-Use this skill when proposing a new change or feature for .
+Use this skill when proposing a new change or feature for `sgt_mvc`.
 
 ## Input
-- Change name (in , e.g., ) or a natural language description of what to build.
+- Change name (in `kebab-case`, e.g., `gestion-torneos`) or a natural language description of what to build.
 
 ## Workflow
 
 1. **Setup Change Directory**:
-   - Location: 
-   - If CLI is available, run .
-   - Otherwise, create directory  and a  with .
+   - Location: `src/sgt_mvc/openspec/changes/<change-name>/`
+   - Create directory `src/sgt_mvc/openspec/changes/<change-name>/` and `specs/` subdirectory.
 
 2. **Generate OpenSpec Artifacts**:
-   - ****: Context, motivation, proposed change, entity impact, migration requirements.
-   - ****: Domain specifications using **Given / When / Then** scenarios.
-   - ****: Architecture, Symfony services, Doctrine entities, repositories, and UI components.
-   - ****: Step-by-step implementation checklist with  checkboxes, including test verification.
+   - **`proposal.md`**: Context, motivation, proposed change, entity impact, migration requirements.
+   - **`specs/<domain>/spec.md`**: Domain specifications using **Given / When / Then** scenarios.
+   - **`design.md`**: Architecture, Symfony services, Doctrine entities, repositories, and UI components.
+   - **`tasks.md`**: Step-by-step implementation checklist with `- [ ]` checkboxes, including test verification.
 
 3. **Completion**:
    - List generated artifacts.
