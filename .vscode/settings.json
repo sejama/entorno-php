@@ -7,9 +7,9 @@
   "phpcs.standard": "PSR12",
   "terminal.integrated.defaultProfile.linux": "bash",
   "files.exclude": {
-    "**/var/**": true,
-    "**/vendor/**": true,
-    "**/node_modules/**": true
+    "**/var/**": false,
+    "**/vendor/**": false,
+    "**/node_modules/**": false
   },
   "files.watcherExclude": {
     "**/var/**": true,
